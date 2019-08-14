@@ -32,7 +32,7 @@ spec:
       containers:
       - name: iperf3
 #        image: example/iperf3:0.1.0
-        image: networkstatic/iperf3
+        image: ynakaoku/iperf3-image
         command: ['/bin/sh', '-c', 'sleep infinity']
         # To benchmark manually: kubectl exec iperf3-clients-jlfxq -- /bin/sh -c 'iperf3 -c iperf3-server'
         ports:

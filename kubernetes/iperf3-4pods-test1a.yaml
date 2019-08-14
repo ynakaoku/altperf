@@ -111,7 +111,7 @@ spec:
           name: iperf3-dep12-u
       terminationGracePeriodSeconds: 0
       nodeSelector:
-        id: node2
+        id: node1
 
 ---
 
@@ -179,7 +179,7 @@ spec:
           name: iperf3-dep13-u
       terminationGracePeriodSeconds: 0
       nodeSelector:
-        id: node3
+        id: node1
 
 ---
 
@@ -247,7 +247,7 @@ spec:
           name: iperf3-dep14-u
       terminationGracePeriodSeconds: 0
       nodeSelector:
-        id: node4
+        id: node1
 
 ---
 

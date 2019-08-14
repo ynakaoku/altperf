@@ -1,36 +1,49 @@
 # altperf
+
 *ALTPerf* is short name of *Advanced Lab Tools for Performance* that aims to automating execution of multi point network performance test in virtualized or containerized(kubernetes) environment.  Altperf contains programs and definitions for running tests, especially on top of virtual environment like VMware vSphere and NSX environments in terms of deployment automation. In testing function part, the programs will work well in various environment unless the test endpoints are VM or K8s containers.  
 This tool provides test functionalities like below:  
-- Network performance testing with major tools like iperf and Apache Bench. 
-- Supports various test parameters that tools can provide natively. 
-- Testing between VMs and Kubernetes PODs. 
+
+- Network performance testing with major tools like iperf and Apache Bench.
+- Supports various test parameters that tools can provide natively.
+- Testing between VMs and Kubernetes PODs.
 - Generates mutiple test flows.  
-- Also monitor CPU performance of underlying hypervisors (vSphere ESXi)   
+- Also monitor CPU performance of underlying hypervisors (vSphere ESXi)
 
 ## How it works
+
 The stack can be devided to two major parts: *Test Server* and *Test Client*. Test Server called *altperf-server* includes REST-API based interfaces, backend scripts and performance data repository. Test Client is bunch of performance test tools like iperf, Apache Benach, and so on. Test Client is expected to be installed on test endpoints like VMs and/or K8s Pods.  
 
 ### Tester Server
+
 The *altperf-server* directory includes programs and definitions for Test Server, that is the most important part of this package. altperf-server includes bash and python scripts to perform network tests in distributed environment. For example, altperf-server can control multiple VMs and K8s PODs in parallel so that you can test and measure network throughput as aggregation of multiple flows between different, distributed instances. Test Server includes programs for REST-API server implementation as well.  
 The altperf-server supports iperf3, however apache bench or its descents are partially supported and will be fully supported in future.  
 The tool can also monitor CPU utilization of vSphere Hypervisors that will be affected by traffic generation/receiving in VM layer.  
 
 ### Tester Client
+
 Test Client is container image definition for iperf3 performace measurement tool. The image for apache bench or its descents will be provided in future.  
 
 ### Kubernetes
+
 The *kubernetes* directory is collection of Kubernetes definitions. The installation of Kubernetes is not included in this package. These definitions can be used to deploy and change both altperf-server and test pods via Kubernetes API and CLI.  
 
 ### Deployment Examples
-The *deplyment_examples* directory is collection of definitions for orchestration tools like Ansible, Terraform. The installation of these tools are not included in this package. These definitions can be used to deploy and change test environment automatically without direct interation with components like vSphere and NSX. 
+
+The *deplyment_examples* directory is collection of definitions for orchestration tools like Ansible, Terraform. The installation of these tools are not included in this package. These definitions can be used to deploy and change test environment automatically without direct interation with components like vSphere and NSX.  
 
 ## Installation and Setup
-Test Server can be installed on one Linux host or Kubernetes Pod deployment. Also you need to provide virtual machines and/or kubernetes deployments as Test Clients.   
+
+Test Server can be installed on one Linux host or Kubernetes Pod deployment. Also you need to provide virtual machines and/or kubernetes deployments as Test Clients.  
+
 ### Setup Test Server host
+
 Please select your favorite form factor for altperf-server machine. In case that you selected Linux or MacOSX machine as controller, please follow these steps.  
+
 #### Python Installation
-At first, please ensure that these packages are installed in your controller machine: 
-----------NEED TO REVISE FROM HERE-----------------
+
+At first, please ensure that these packages are installed in your controller machine:  
+----------NEED TO REVISE FROM HERE-----------------  
+
 - python 3.5
 - python modules
   - pip
